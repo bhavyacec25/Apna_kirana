@@ -53,12 +53,17 @@
       "name": "Ramesh Gupta",
       "phone": "9812345678",
       "email": "ramesh.gupta@gmail.com",
-      "role": "shopkeeper",
+      "role": "customer",
       "address": "Sector 18, Ludhiana",
       "shopName": "Gupta Daily Needs",
       "shopId": "S0004",
       "status": "active",
-      "createdAt": "2026-09-12T06:55:34.753Z"
+      "createdAt": "2026-09-12T06:55:34.753Z",
+      "designation": null,
+      "promotedAt": "2026-11-05T10:10:12.244Z",
+      "promotedBy": "8283833894",
+      "revokedAt": "2026-11-05T10:10:14.203Z",
+      "revokedBy": "8283833894"
     },
     {
       "id": "U1789197617675",
@@ -107,6 +112,18 @@
       "shopId": "S0006",
       "status": "active",
       "createdAt": "2026-09-18T09:34:10.726Z"
+    },
+    {
+      "id": "U1793868959145",
+      "name": "Bhavya Chhajer",
+      "phone": "9769243347",
+      "email": "",
+      "role": "customer",
+      "address": "",
+      "shopName": null,
+      "shopId": null,
+      "status": "active",
+      "createdAt": "2026-11-05T08:55:59.145Z"
     }
   ],
   "shops": [

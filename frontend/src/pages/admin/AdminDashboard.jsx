@@ -161,6 +161,12 @@ export default function AdminDashboard() {
 
             <div className="flex items-center gap-3">
               <Link
+                to="/admin/users?tab=admins&openAdd=true"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-extrabold text-xs px-4 py-2.5 rounded-2xl shadow-lg hover:from-emerald-600 hover:to-teal-700 transition-all"
+              >
+                <FiPlus size={14} /> Add Admin Member
+              </Link>
+              <Link
                 to="/admin/shops"
                 className="inline-flex items-center gap-2 bg-white text-purple-900 font-extrabold text-xs px-4 py-2.5 rounded-2xl shadow-lg hover:bg-purple-50 transition-all"
               >
@@ -259,7 +265,22 @@ export default function AdminDashboard() {
         )}
 
         {/* Fast Action Shortcuts */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Link
+            to="/admin/users?tab=admins"
+            className="card p-5 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-3xl hover:shadow-md transition-all flex items-center gap-4 group"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+              🛡️
+            </div>
+            <div>
+              <p className="font-bold text-sm text-gray-900 dark:text-white group-hover:text-indigo-600 transition-colors">
+                Admin Team
+              </p>
+              <p className="text-xs text-gray-500">Scale operations &amp; add admins</p>
+            </div>
+          </Link>
+
           <Link
             to="/admin/shops"
             className="card p-5 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-3xl hover:shadow-md transition-all flex items-center gap-4 group"
@@ -269,9 +290,9 @@ export default function AdminDashboard() {
             </div>
             <div>
               <p className="font-bold text-sm text-gray-900 dark:text-white group-hover:text-purple-600 transition-colors">
-                Shops &amp; Legal Papers
+                Shops &amp; Legal
               </p>
-              <p className="text-xs text-gray-500">Approve GST &amp; FSSAI food licenses</p>
+              <p className="text-xs text-gray-500">Approve GST &amp; FSSAI licenses</p>
             </div>
           </Link>
 

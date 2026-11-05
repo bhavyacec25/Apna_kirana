@@ -27,6 +27,7 @@ export const sendOtpSchema = z
   .object({
     phone: phoneSchema.optional(),
     email: emailSchema.optional(),
+    role: z.enum(["customer", "shopkeeper", "admin", "User"]).optional().default("customer"),
   })
   .refine((data) => data.phone || data.email, {
     message: "Either a valid 10-digit phone number or a valid email is required.",
@@ -53,6 +54,14 @@ export const adminAddShopkeeperSchema = z.object({
   phone: phoneSchema,
   shopName: z.string().min(2, "Shop name must be at least 2 characters."),
   area: z.string().optional().default(""),
+});
+
+// Admin scale up: Add new administrator team member
+export const adminAddAdminMemberSchema = z.object({
+  name: z.string().min(2, "Admin member name must be at least 2 characters."),
+  phone: phoneSchema,
+  email: emailSchema.optional().or(z.literal("")),
+  designation: z.string().min(2).max(60).optional().default("Operations Admin"),
 });
 
 // Shopkeeper government-authorized GST & legal documents schema

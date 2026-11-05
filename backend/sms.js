@@ -156,3 +156,26 @@ export async function sendSmsOtp({ phone, otp, role = "User" }) {
     message: "OTP ready for +91 " + cleanPhone,
   };
 }
+
+export async function sendAdminWelcomeAlert({ phone, name, designation = "Operations Admin" }) {
+  const cleanPhone = phone.replace(/\D/g, "").slice(-10);
+  if (process.env.WHATSAPP_API_KEY && process.env.WHATSAPP_INSTANCE_ID) {
+    try {
+      const url = `https://api.ultramsg.com/${encodeURIComponent(
+        process.env.WHATSAPP_INSTANCE_ID.trim()
+      )}/messages/chat`;
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          token: process.env.WHATSAPP_API_KEY.trim(),
+          to: `91${cleanPhone}`,
+          body: `🛡️ *ApnaKirana Executive Clearance*\n\nHello *${name}*,\nYou have been authorized as *${designation}* on ApnaKirana.\n\nYou can access the Private Executive Admin Console at:\nhttp://localhost:5173/admin/login\n\nLogin using your mobile: *+91 ${cleanPhone}*.\n\n— ApnaKirana Operations Command`,
+        }),
+      });
+      return await res.json();
+    } catch (err) {
+      console.warn("⚠️ [WhatsApp Admin Alert]:", err.message);
+    }
+  }
+}

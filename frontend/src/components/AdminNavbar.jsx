@@ -18,7 +18,7 @@ export default function AdminNavbar() {
     { to: "/admin/dashboard", label: "Dashboard", icon: FiGrid },
     { to: "/admin/shops", label: "Shops & Legal", icon: FiShoppingBag },
     { to: "/admin/orders", label: "Orders", icon: FiList },
-    { to: "/admin/users", label: "Users", icon: FiUsers },
+    { to: "/admin/users", label: "Team & Users", icon: FiUsers },
   ];
 
   return (

@@ -159,7 +159,7 @@ export default function AdminLogin() {
         role: "admin",
       });
 
-      toast.success(`Welcome back, Master Admin ${adminUser.name || ""}! 🛡️`);
+      toast.success(`Welcome back, ${adminUser.name || "Administrator"}! 🛡️`);
       navigate("/admin/dashboard", { replace: true });
     } catch (err) {
       setError(err.message || "Invalid or unauthorized administrator verification code.");

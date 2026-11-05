@@ -165,12 +165,19 @@ router.post("/verify-otp", validate(verifyOtpSchema), async (req, res, next) => 
     }
 
     // Find user by email or phone
+    const cleanPhone = phone ? phone.replace(/\D/g, "").slice(-10) : "";
     let user = null;
     if (email) {
       const allUsers = await getAll("users");
       user = allUsers.find((u) => u.email?.toLowerCase() === email.toLowerCase() && u.role === role);
-    } else if (phone) {
-      user = await getOne("users", { phone, role });
+    } else if (cleanPhone) {
+      const allUsers = await getAll("users");
+      user = allUsers.find(
+        (u) =>
+          u.role === role &&
+          u.phone &&
+          u.phone.replace(/\D/g, "").slice(-10) === cleanPhone
+      );
     }
 
     if (!user) {

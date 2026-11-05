@@ -37,3 +37,16 @@ export async function updateUserStatus(id, status) {
   const { user } = await api.patch(`/admin/users/${id}/status`, { status });
   return user;
 }
+
+export async function getAdminMembers() {
+  const { admins } = await api.get("/admin/admins");
+  return admins;
+}
+
+export async function addAdminMember(data) {
+  return api.post("/admin/admins", data);
+}
+
+export async function revokeAdminMember(id) {
+  return api.delete(`/admin/admins/${id}`);
+}
