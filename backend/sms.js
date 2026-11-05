@@ -87,6 +87,41 @@ export async function sendSmsOtp({ phone, otp, role = "User" }) {
     }
   }
 
+  // 4. WhatsApp Gateway (Unlimited / Free Daily OTPs)
+  // Supports UltraMsg / Green-API / WhatsApp Web Gateway
+  if (process.env.WHATSAPP_API_KEY && process.env.WHATSAPP_INSTANCE_ID) {
+    try {
+      console.log(`\n💬 [WHATSAPP] Dispatching real OTP to +91${cleanPhone}...`);
+      const url = `https://api.ultramsg.com/${encodeURIComponent(
+        process.env.WHATSAPP_INSTANCE_ID.trim()
+      )}/messages/chat`;
+
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          token: process.env.WHATSAPP_API_KEY.trim(),
+          to: `91${cleanPhone}`,
+          body: `🛍️ *ApnaKirana Verification Code*\n\nYour 6-digit login OTP is: *${otp}*\n\nValid for 15 minutes. Never share this code with anyone.\n\n— ApnaKirana Instant Delivery`,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.sent === "true" || data.id) {
+        console.log(`✅ [WHATSAPP] Real OTP ${otp} delivered to +91${cleanPhone}!`);
+        return {
+          sent: true,
+          provider: "WhatsApp",
+          message: `Real OTP sent to your WhatsApp +91 ${cleanPhone}!`,
+        };
+      } else {
+        console.warn(`⚠️ [WhatsApp Error]:`, data);
+      }
+    } catch (err) {
+      console.error(`❌ [WhatsApp Network Error]:`, err.message);
+    }
+  }
+
   console.log(`\nℹ️ [PHONE OTP] To: +91${cleanPhone} | OTP: ${otp}`);
   console.log("ℹ️ No SMS Gateway key set in backend/.env (FAST2SMS_API_KEY or TWILIO or TWOFACTOR).");
   console.log("   Displaying OTP in dev hint for seamless testing.\n");
