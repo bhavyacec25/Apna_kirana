@@ -5,7 +5,7 @@
   "description": "ApnaKirana backend API - Express + JSON file datastore (single source of truth for orders/products/users)",
   "main": "server.js",
   "scripts": {
-    "dev": "node --watch --watch-exclude=data/ server.js",
+    "dev": "node --watch server.js",
     "start": "node server.js"
   },
   "dependencies": {
