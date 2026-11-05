@@ -9,7 +9,7 @@
       "address": "123, Model Town, Ludhiana",
       "shopName": null,
       "shopId": null,
-      "status": "suspended",
+      "status": "active",
       "createdAt": "2026-09-12T06:55:34.719Z"
     },
     {
@@ -21,7 +21,7 @@
       "address": "Shop 4, Model Town, Ludhiana",
       "shopName": "Suresh Kirana Store",
       "shopId": "S001",
-      "status": "suspended",
+      "status": "active",
       "createdAt": "2026-09-12T06:55:34.719Z"
     },
     {
@@ -45,7 +45,7 @@
       "address": "",
       "shopName": "Test Kirana",
       "shopId": "S0003",
-      "status": "suspended",
+      "status": "active",
       "createdAt": "2026-09-12T06:55:34.721Z"
     },
     {
@@ -57,7 +57,7 @@
       "address": "Sector 18, Ludhiana",
       "shopName": "Gupta Daily Needs",
       "shopId": "S0004",
-      "status": "suspended",
+      "status": "active",
       "createdAt": "2026-09-12T06:55:34.753Z"
     },
     {
@@ -69,7 +69,7 @@
       "address": "",
       "shopName": null,
       "shopId": null,
-      "status": "suspended",
+      "status": "active",
       "createdAt": "2026-09-12T07:20:17.675Z"
     },
     {
@@ -81,7 +81,7 @@
       "address": "",
       "shopName": "SURESH KIRAN STORE",
       "shopId": "S0005",
-      "status": "suspended",
+      "status": "active",
       "createdAt": "2026-09-12T07:22:45.054Z"
     },
     {
@@ -93,7 +93,7 @@
       "address": "",
       "shopName": null,
       "shopId": null,
-      "status": "suspended",
+      "status": "active",
       "createdAt": "2026-09-18T06:51:34.785Z"
     },
     {
@@ -105,7 +105,7 @@
       "address": "",
       "shopName": "Suresh Kirana Store",
       "shopId": "S0006",
-      "status": "suspended",
+      "status": "active",
       "createdAt": "2026-09-18T09:34:10.726Z"
     }
   ],
