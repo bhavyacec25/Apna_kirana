@@ -14,7 +14,6 @@ import {
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
-// Helper to pan map smoothly when rider moves
 function MapPanUpdater({ center }) {
   const map = useMap();
   useEffect(() => {
@@ -25,7 +24,6 @@ function MapPanUpdater({ center }) {
   return null;
 }
 
-// Haversine formula to compute distance in km
 function calculateDistanceKm(lat1, lon1, lat2, lon2) {
   if (!lat1 || !lon1 || !lat2 || !lon2) return 1.2;
   const R = 6371; // Earth radius in km

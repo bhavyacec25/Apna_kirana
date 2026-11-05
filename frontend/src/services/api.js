@@ -1,8 +1,3 @@
-// services/api.js
-// One tiny fetch wrapper that every service module builds on.
-// Keeping it centralized means there's exactly one place that knows
-// about the "/api" base path, auth header, and error-handling shape.
-
 const BASE = "/api";
 const TOKEN_KEY = "apnakirana_token";
 

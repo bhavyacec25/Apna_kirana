@@ -1,19 +1,3 @@
-// routes/orders.js
-// Still THE single source of truth for orders — now backed by
-// Firebase Firestore, fully async, protected by JWT auth so a customer
-// token can't read/modify someone else's orders, and only
-// shopkeepers/admins can change status. Also drives the simulated live
-// delivery location (see deliverySimulation.js) once an order goes
-// "Out for Delivery".
-//
-// NOTE on Firestore vs SQL: Firestore has no SQL WHERE/ORDER BY string
-// building, so multi-condition filtering and sorting below are done in
-// plain JavaScript after a single getAll() fetch. That's fine at this
-// project's scale (a shop's or a customer's order history); a
-// higher-volume production app would instead push these filters into
-// real Firestore .where()/.orderBy() query chains (see getFirestore()
-// in db.js for direct access when that's needed).
-
 import { Router } from "express";
 import { getOne, insertRow, updateRow, deleteRow, getNextId, getAll } from "../db.js";
 import { requireAuth, requireRole } from "../middleware/auth.js";

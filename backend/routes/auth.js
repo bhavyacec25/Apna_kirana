@@ -1,13 +1,3 @@
-// routes/auth.js
-// Phone & Email + OTP authentication.
-//
-// GMAIL & TWILIO SUPPORT:
-// 1. Email OTP: If GMAIL_USER & GMAIL_APP_PASSWORD are set in .env, sends real emails
-//    using nodemailer with a 6-digit OTP.
-// 2. Twilio SMS: If TWILIO credentials are set in .env, sends SMS OTP to phone.
-// 3. Dev Mode: If credentials are blank, OTP is generated and returned as `devHint`
-//    so you can test instantly without waiting for credentials.
-
 import { Router } from "express";
 import rateLimit from "express-rate-limit";
 import { getAll, getOne, insertRow, updateRow, getNextId } from "../db.js";

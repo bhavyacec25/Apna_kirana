@@ -1,13 +1,3 @@
-// deliverySimulation.js
-// There's no real delivery-partner app in this project yet, so instead
-// of a fake static "on the way" message, this simulates a rider moving
-// in real time from the shop's location to the customer's delivery
-// coordinates once an order hits "Out for Delivery". It's a stand-in
-// for what a real delivery-partner GPS feed would eventually replace —
-// same event shape (`order:location` with riderLat/riderLng), so
-// swapping in real GPS later means changing what feeds updateRiderPosition,
-// not the tracking UI.
-
 import { getOne, updateRow } from "./db.js";
 import { emitOrderLocation } from "./realtime.js";
 

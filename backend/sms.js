@@ -1,11 +1,3 @@
-// sms.js
-// Multi-Gateway Dispatcher for Real Mobile & WhatsApp OTPs.
-// Priority:
-// 1. WhatsApp OTP (UltraMsg & Green-API — 100% Free / Unlimited daily tier)
-// 2. Fast2SMS (India telecom SMS)
-// 3. 2Factor.in (India SMS)
-// 4. Twilio Verify (Global SMS)
-
 export async function sendSmsOtp({ phone, otp, role = "User" }) {
   const cleanPhone = phone.replace(/\D/g, "").slice(-10);
 

@@ -13,11 +13,8 @@ import {
   FiZap,
   FiShoppingBag,
   FiAlertCircle,
-  FiHelpCircle,
 } from "react-icons/fi";
-import { auth, RecaptchaVerifier, signInWithPhoneNumber } from "../firebase";
 
-/* ── Instamart Category Badges ──────────────────────────── */
 const QUICK_TAGS = [
   { emoji: "🥑", label: "Farm Fresh" },
   { emoji: "🥛", label: "Milk & Dairy" },
