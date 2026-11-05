@@ -66,6 +66,27 @@ const otpLimiter = rateLimit({
 router.post("/send-otp", otpLimiter, validate(sendOtpSchema), async (req, res, next) => {
   try {
     const { phone, email, role = "User" } = req.body;
+
+    // Strict Security Guard: Only pre-authorized master administrators can request Admin OTPs
+    if (role === "admin") {
+      const allUsers = await getAll("users");
+      const cleanPhone = phone ? phone.replace(/\D/g, "").slice(-10) : "";
+      const isAdmin = allUsers.some(
+        (u) =>
+          u.role === "admin" &&
+          ((cleanPhone && u.phone && u.phone.slice(-10) === cleanPhone) ||
+            (email && u.email && u.email.toLowerCase() === email.toLowerCase()) ||
+            (cleanPhone && cleanPhone === "8283833894") ||
+            (email && email.toLowerCase() === "chhajerbhavya30@gmail.com"))
+      );
+      if (!isAdmin) {
+        throw new ApiError(
+          403,
+          "Access Denied. Only pre-authorized Administrators can access the Admin Portal."
+        );
+      }
+    }
+
     const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
 
     // 1. Email OTP Flow

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
@@ -282,12 +282,11 @@ export default function Login() {
 
           {/* Instamart Login Card */}
           <div className="bg-white rounded-[28px] shadow-xl shadow-gray-200/60 border border-gray-200/80 p-6 sm:p-8 relative overflow-hidden">
-            {/* Top Role Selector (Shopper / Store Owner / Admin) */}
+            {/* Top Role Selector (Shopper / Store Owner) */}
             <div className="flex bg-gray-100/80 p-1 rounded-2xl mb-6">
               {[
                 { key: "customer", label: "🛒 Shopper" },
                 { key: "shopkeeper", label: "🏪 Store Owner" },
-                { key: "admin", label: "🔑 Admin" },
               ].map(({ key, label }) => (
                 <button
                   key={key}
@@ -327,11 +326,6 @@ export default function Login() {
             {role === "shopkeeper" && (
               <div className="bg-violet-50 border border-violet-200/80 text-violet-900 text-xs rounded-xl p-3 mb-4">
                 💼 <b>Partner Store Portal:</b> Enter your registered email or phone to manage inventory, track orders, and configure delivery.
-              </div>
-            )}
-            {role === "admin" && (
-              <div className="bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-xl p-3 mb-4">
-                🔑 <b>Platform Admin:</b> Pre-configured demo admin mobile: <b>8283833894</b>
               </div>
             )}
 
@@ -598,8 +592,11 @@ export default function Login() {
       </main>
 
       {/* Footer */}
-      <footer className="py-4 text-center text-xs text-gray-400 border-t border-gray-200/60">
-        ApnaKirana Instant Commerce Private Limited · Made with ❤️ for Local Kirana Stores
+      <footer className="py-4 text-center text-xs text-gray-400 border-t border-gray-200/60 flex flex-col items-center gap-1">
+        <span>ApnaKirana Instant Commerce Private Limited · Made with ❤️ for Local Kirana Stores</span>
+        <Link to="/admin/login" className="text-[10px] text-gray-400 hover:text-gray-600 transition flex items-center gap-1">
+          <span>🔒</span> Admin Portal
+        </Link>
       </footer>
     </div>
   );

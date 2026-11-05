@@ -18,6 +18,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminShops from "./pages/admin/AdminShops";
 import AdminOrders from "./pages/admin/AdminOrders";
 import AdminUsers from "./pages/admin/AdminUsers";
+import AdminLogin from "./pages/admin/AdminLogin";
 import RiderPortal from "./pages/RiderPortal";
 
 function homeForRole(role) {
@@ -28,7 +29,7 @@ function homeForRole(role) {
 
 function RequireRole({ role, children }) {
   const { user } = useAuth();
-  if (!user) return <Navigate to="/login" replace />;
+  if (!user) return <Navigate to={role === "admin" ? "/admin/login" : "/login"} replace />;
   if (user.role !== role) return <Navigate to={homeForRole(user.role)} replace />;
   return children;
 }
@@ -54,6 +55,18 @@ function AppRoutes() {
             />
           ) : (
             <Login />
+          )
+        }
+      />
+
+      {/* Dedicated Executive Admin Portal Login */}
+      <Route
+        path="/admin/login"
+        element={
+          user && user.role === "admin" ? (
+            <Navigate to="/admin/dashboard" replace />
+          ) : (
+            <AdminLogin />
           )
         }
       />

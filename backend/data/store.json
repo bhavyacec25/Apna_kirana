@@ -26,11 +26,11 @@
     },
     {
       "id": "U0003",
-      "name": "Platform Admin",
+      "name": "Bhavya Chhajer (Admin)",
       "phone": "8283833894",
-      "email": "admin@apnakirana.com",
+      "email": "chhajerbhavya30@gmail.com",
       "role": "admin",
-      "address": "",
+      "address": "Master Admin Office",
       "shopName": null,
       "shopId": null,
       "status": "active",
@@ -224,7 +224,7 @@
       "deliveryTime": "20-30 min",
       "image": "kirana",
       "ownerId": "U1789724050750",
-      "status": "suspended",
+      "status": "approved",
       "legal": {
         "status": "draft"
       },
@@ -453,6 +453,56 @@
       "riderName": "Vikas Kumar (Delivery Partner)",
       "riderPhone": "+91 8283833894",
       "vehicleNumber": "PB-10-EK-4589"
+    },
+    {
+      "id": "ORD0003",
+      "customerId": "U1789197617675",
+      "customer": "Bhavya Chhajer",
+      "phone": "8283833894",
+      "email": "",
+      "address": "ludhiana",
+      "shopId": "S002",
+      "shopName": "Green Valley Fresh Mart",
+      "deliveryTime": "As soon as possible",
+      "notes": "",
+      "paymentMethod": "UPI",
+      "items": [
+        {
+          "id": "P012",
+          "name": "Maggi Noodles",
+          "unit": "4 pack",
+          "qty": 2,
+          "price": 56,
+          "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=500&auto=format&fit=crop&q=60",
+          "expiryDate": null
+        },
+        {
+          "id": "P011",
+          "name": "Apple (Shimla)",
+          "unit": "1 kg",
+          "qty": 2,
+          "price": 180,
+          "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500&auto=format&fit=crop&q=60",
+          "expiryDate": null
+        }
+      ],
+      "subtotal": 472,
+      "deliveryFee": 40,
+      "platformFee": 5,
+      "discount": 0,
+      "couponCode": null,
+      "total": 517,
+      "status": "Pending",
+      "date": "5 Nov, 12:19 pm",
+      "createdAt": "2026-11-05T06:49:49.394Z",
+      "updatedAt": null,
+      "destLat": 30.912,
+      "destLng": 75.845,
+      "riderLat": null,
+      "riderLng": null,
+      "riderName": "Vikas Kumar (Delivery Partner)",
+      "riderPhone": "+91 8283833894",
+      "vehicleNumber": "PB-10-EK-4589"
     }
   ],
   "reviews": [],
@@ -461,7 +511,7 @@
     "S": 6,
     "P": 12,
     "U": 3,
-    "ORD": 2
+    "ORD": 3
   },
   "legal": []
 }
