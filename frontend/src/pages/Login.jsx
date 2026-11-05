@@ -191,6 +191,8 @@ export default function Login() {
 
       if (isEmail) {
         toast.success(`OTP sent to ${email} via Gmail!`);
+      } else if (res.channel === "whatsapp") {
+        toast.success(res.message || `Real OTP sent to WhatsApp +91 ${phone}!`, { icon: "💬" });
       } else if (res.channel === "sms" && !res.devHint) {
         toast.success(res.message || `Real SMS OTP sent to +91 ${phone}!`);
       } else if (!fbSmsSuccess) {
@@ -423,12 +425,17 @@ export default function Login() {
                   </div>
                 )}
 
-                {/* Main Identifier: Mobile or Email */}
+                {/* Main Identifier: Mobile (WhatsApp) or Email */}
                 {authMethod === "phone" ? (
                   <div>
-                    <label className="text-[11px] font-bold uppercase tracking-wider text-gray-600 block mb-1">
-                      Mobile Number
-                    </label>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="text-[11px] font-bold uppercase tracking-wider text-gray-700 block">
+                        Mobile Number
+                      </label>
+                      <span className="text-[10px] font-black uppercase text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
+                        <span>💬</span> WhatsApp OTP
+                      </span>
+                    </div>
                     <div className="flex items-center gap-2">
                       {/* Indian Flag Badge */}
                       <div className="flex items-center gap-1.5 bg-gray-100 border border-gray-200 rounded-xl px-3.5 py-3 text-sm font-bold text-gray-800 shrink-0 select-none">
@@ -439,13 +446,16 @@ export default function Login() {
                         type="tel"
                         maxLength={10}
                         className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-base text-gray-900 font-extrabold tracking-wider placeholder-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
-                        placeholder="10-digit number"
+                        placeholder="10-digit mobile number"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
                         required
                         autoFocus
                       />
                     </div>
+                    <p className="text-[10px] text-emerald-700 font-semibold mt-1.5 flex items-center gap-1">
+                      <span>✓</span> 6-digit verification code will be sent to your WhatsApp
+                    </p>
                   </div>
                 ) : (
                   <div>
@@ -474,7 +484,7 @@ export default function Login() {
                     onClick={() => setAuthMethod(authMethod === "phone" ? "email" : "phone")}
                     className="text-emerald-700 hover:text-emerald-800 font-bold hover:underline"
                   >
-                    {authMethod === "phone" ? "✉️ Use Email OTP instead" : "📱 Use Phone OTP (+91) instead"}
+                    {authMethod === "phone" ? "✉️ Use Email OTP (Gmail) instead" : "💬 Use WhatsApp OTP (+91) instead"}
                   </button>
                 </div>
 
@@ -515,8 +525,14 @@ export default function Login() {
                 <div className="bg-emerald-50/70 border border-emerald-100 rounded-2xl p-4 flex items-center justify-between gap-3">
                   <div className="min-w-0">
                     <p className="text-xs text-gray-500 font-medium">OTP sent to</p>
-                    <p className="text-sm font-extrabold text-gray-900 truncate">
-                      {authMethod === "phone" ? `+91 ${phone}` : email}
+                    <p className="text-sm font-extrabold text-gray-900 truncate flex items-center gap-1">
+                      {authMethod === "phone" ? (
+                        <>
+                          <span>💬</span> +91 {phone}
+                        </>
+                      ) : (
+                        email
+                      )}
                     </p>
                   </div>
                   <button
@@ -530,6 +546,27 @@ export default function Login() {
                     <FiEdit2 size={11} /> Edit
                   </button>
                 </div>
+
+                {/* WhatsApp Status Pill */}
+                {authMethod === "phone" && (
+                  <div className="bg-emerald-50 border border-emerald-200/90 text-emerald-950 text-xs rounded-2xl p-3 flex items-center justify-between gap-2 shadow-2xs">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg">💬</span>
+                      <div>
+                        <p className="font-extrabold text-emerald-900">WhatsApp OTP Dispatched</p>
+                        <p className="text-[11px] text-emerald-700 font-medium">Check your WhatsApp on +91 {phone}</p>
+                      </div>
+                    </div>
+                    <a
+                      href={`https://wa.me/91${phone}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl shrink-0 shadow-xs transition"
+                    >
+                      Open WhatsApp &rarr;
+                    </a>
+                  </div>
+                )}
 
                 {/* Real SMS notification badge */}
                 {isFirebaseSmsSent && (

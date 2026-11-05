@@ -104,13 +104,13 @@ router.post("/send-otp", otpLimiter, validate(sendOtpSchema), async (req, res, n
       if (smsResult.sent) {
         return res.json({
           success: true,
-          message: smsResult.message || `Real SMS OTP sent to +91 ${phone}!`,
-          channel: "sms",
+          message: smsResult.message || `Real OTP sent to +91 ${phone}!`,
+          channel: smsResult.provider === "WhatsApp" ? "whatsapp" : "sms",
           provider: smsResult.provider,
         });
       }
 
-      // Dev mode: return OTP hint if no external SMS gateway is configured
+      // Dev mode: return OTP hint if no external gateway is configured
       return res.json({
         success: true,
         message: `OTP generated for +91 ${phone}`,
