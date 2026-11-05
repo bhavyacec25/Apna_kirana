@@ -135,55 +135,9 @@ export default function Login() {
     setLoading(true);
     try {
       const identifier = isEmail ? email.trim() : phone.trim();
-      let fbSmsSuccess = false;
 
-      // Real Phone Auth via Firebase Client SDK
-      if (!isEmail) {
-        try {
-          if (window.recaptchaVerifier) {
-            try {
-              window.recaptchaVerifier.clear();
-            } catch {}
-            window.recaptchaVerifier = null;
-          }
-
-          window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-            size: "invisible",
-            callback: () => {},
-          });
-
-          const formattedPhone = `+91${phone.trim()}`;
-          const confirmation = await signInWithPhoneNumber(
-            auth,
-            formattedPhone,
-            window.recaptchaVerifier
-          );
-          window.confirmationResult = confirmation;
-          fbSmsSuccess = true;
-          setIsFirebaseSmsSent(true);
-          toast.success(`Real SMS sent to +91 ${phone} via Firebase!`);
-        } catch (fbErr) {
-          console.warn("Firebase Phone Auth note:", fbErr.code, fbErr.message);
-          let noteMsg = "";
-          if (fbErr.code === "auth/operation-not-allowed") {
-            noteMsg =
-              "Phone sign-in is disabled in Firebase Console. Enable it under Authentication → Sign-in method → Phone.";
-          } else if (fbErr.code === "auth/unauthorized-domain") {
-            noteMsg =
-              "Domain unauthorized. Add 'localhost' in Firebase Console → Authentication → Settings → Authorized domains.";
-          } else if (fbErr.code === "auth/billing-not-enabled") {
-            noteMsg =
-              "Firebase project requires Identity Platform billing or test phone numbers for SMS delivery.";
-          } else {
-            noteMsg = `Firebase note: ${fbErr.message}`;
-          }
-          setFirebaseNote(noteMsg);
-        }
-      }
-
-      // Backend OTP generation & multi-channel dispatch (Gmail SMTP / Fast2SMS / Twilio)
+      // Backend OTP generation & multi-channel dispatch (WhatsApp UltraMsg / Gmail SMTP)
       const res = await requestOtp(identifier, role);
-      setDevHint(res.devHint || "");
       setStep("otp");
       setCountdown(30);
       setCanResend(false);
@@ -191,12 +145,8 @@ export default function Login() {
 
       if (isEmail) {
         toast.success(`OTP sent to ${email} via Gmail!`);
-      } else if (res.channel === "whatsapp") {
-        toast.success(res.message || `Real OTP sent to WhatsApp +91 ${phone}!`, { icon: "💬" });
-      } else if (res.channel === "sms" && !res.devHint) {
-        toast.success(res.message || `Real SMS OTP sent to +91 ${phone}!`);
-      } else if (!fbSmsSuccess) {
-        toast.success(`OTP ready for +91 ${phone}!`);
+      } else {
+        toast.success(`Real OTP sent to WhatsApp +91 ${phone}!`, { icon: "💬" });
       }
     } catch (err) {
       setError(err.message);
@@ -565,44 +515,6 @@ export default function Login() {
                     >
                       Open WhatsApp &rarr;
                     </a>
-                  </div>
-                )}
-
-                {/* Real SMS notification badge */}
-                {isFirebaseSmsSent && (
-                  <div className="bg-green-50 border border-green-200 text-green-800 text-xs rounded-xl p-2.5 flex items-center gap-2">
-                    <FiCheckCircle className="text-green-600 shrink-0" size={14} />
-                    <span>Real SMS OTP dispatched to your mobile via Firebase!</span>
-                  </div>
-                )}
-
-                {/* Firebase config troubleshooting helper if SMS couldn't be sent */}
-                {firebaseNote && (
-                  <div className="bg-amber-50 border border-amber-200 text-amber-900 text-xs rounded-xl p-3 space-y-1">
-                    <div className="flex items-center gap-1.5 font-bold">
-                      <FiHelpCircle size={14} className="text-amber-700" /> Real SMS Setup Note:
-                    </div>
-                    <p className="text-[11px] text-amber-800 leading-relaxed">{firebaseNote}</p>
-                    <p className="text-[10px] text-gray-500">
-                      💡 <i>You can use the instant OTP below or test OTP <b>123456</b> to log in right now!</i>
-                    </p>
-                  </div>
-                )}
-
-                {/* Dev Hint Box (Fast testing OTP) */}
-                {devHint && (
-                  <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-center justify-between">
-                    <div>
-                      <p className="text-[10px] uppercase font-bold text-gray-400">Your Login OTP</p>
-                      <p className="text-sm font-black font-mono text-gray-900 tracking-wider">{devHint}</p>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={autoFillDevOtp}
-                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow-xs transition"
-                    >
-                      Auto-fill
-                    </button>
                   </div>
                 )}
 
