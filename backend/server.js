@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import path from "path";
+import fs from "fs";
 import { createServer } from "http";
 import { fileURLToPath } from "url";
 
@@ -42,6 +43,18 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/payment", paymentRoutes);
+
+// Serve frontend static build if present (Unified production deployment)
+const frontendDist = path.join(__dirname, "../frontend/dist");
+if (fs.existsSync(frontendDist)) {
+  app.use(express.static(frontendDist));
+  app.get("*", (req, res, next) => {
+    if (req.path.startsWith("/api") || req.path.startsWith("/uploads")) {
+      return next();
+    }
+    res.sendFile(path.join(frontendDist, "index.html"));
+  });
+}
 
 app.use(notFoundHandler);
 app.use(errorHandler);

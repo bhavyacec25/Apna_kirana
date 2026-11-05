@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: apnakirana
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm run render-build
+    startCommand: npm run render-start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: WHATSAPP_INSTANCE_ID
+        value: instance196197
+      - key: WHATSAPP_API_KEY
+        value: opf961idpyh3ggx8
+      - key: EMAIL_USER
+        value: chhajerbhavya30@gmail.com

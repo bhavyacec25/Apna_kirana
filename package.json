@@ -1,0 +1,12 @@
+{
+  "name": "apnakirana",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ApnaKirana Instant Grocery & Kirana Delivery Platform",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install",
+    "start": "cd backend && node server.js",
+    "render-build": "cd frontend && npm install && npm run build && cd ../backend && npm install",
+    "render-start": "cd backend && node server.js"
+  }
+}
