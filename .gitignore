@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Build output
+dist/
+build/
+frontend/dist/
+
+# Environment / secrets — NEVER commit these to GitHub
+.env
+.env.local
+backend/.env
+backend/serviceAccountKey.json
+
+# Uploaded product & legal proof files
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Database temporary files
+backend/data/*.db
+backend/data/*.db-shm
+backend/data/*.db-wal
+
+# OS / logs
+.DS_Store
+*.log
+*.zip

@@ -1,0 +1,467 @@
+{
+  "users": [
+    {
+      "id": "U0001",
+      "name": "Rahul Sharma",
+      "phone": "9876543210",
+      "email": "customer@apnakirana.com",
+      "role": "customer",
+      "address": "123, Model Town, Ludhiana",
+      "shopName": null,
+      "shopId": null,
+      "status": "suspended",
+      "createdAt": "2026-09-12T06:55:34.719Z"
+    },
+    {
+      "id": "U0002",
+      "name": "Suresh Kumar",
+      "phone": "9998887776",
+      "email": "suresh@apnakirana.com",
+      "role": "shopkeeper",
+      "address": "Shop 4, Model Town, Ludhiana",
+      "shopName": "Suresh Kirana Store",
+      "shopId": "S001",
+      "status": "suspended",
+      "createdAt": "2026-09-12T06:55:34.719Z"
+    },
+    {
+      "id": "U0003",
+      "name": "Platform Admin",
+      "phone": "8283833894",
+      "email": "admin@apnakirana.com",
+      "role": "admin",
+      "address": "",
+      "shopName": null,
+      "shopId": null,
+      "status": "active",
+      "createdAt": "2026-09-12T06:55:34.719Z"
+    },
+    {
+      "id": "U1789196134725",
+      "name": "Test Shopkeeper",
+      "phone": "",
+      "email": "testshopkeeper@gmail.com",
+      "role": "shopkeeper",
+      "address": "",
+      "shopName": "Test Kirana",
+      "shopId": "S0003",
+      "status": "suspended",
+      "createdAt": "2026-09-12T06:55:34.721Z"
+    },
+    {
+      "id": "U1789196134757",
+      "name": "Ramesh Gupta",
+      "phone": "9812345678",
+      "email": "ramesh.gupta@gmail.com",
+      "role": "shopkeeper",
+      "address": "Sector 18, Ludhiana",
+      "shopName": "Gupta Daily Needs",
+      "shopId": "S0004",
+      "status": "suspended",
+      "createdAt": "2026-09-12T06:55:34.753Z"
+    },
+    {
+      "id": "U1789197617675",
+      "name": "Bhavya Chhajer",
+      "phone": "8283833894",
+      "email": "",
+      "role": "customer",
+      "address": "",
+      "shopName": null,
+      "shopId": null,
+      "status": "suspended",
+      "createdAt": "2026-09-12T07:20:17.675Z"
+    },
+    {
+      "id": "U1789197765061",
+      "name": "rahul sharm",
+      "phone": "",
+      "email": "yourshop@gmail.com",
+      "role": "shopkeeper",
+      "address": "",
+      "shopName": "SURESH KIRAN STORE",
+      "shopId": "S0005",
+      "status": "suspended",
+      "createdAt": "2026-09-12T07:22:45.054Z"
+    },
+    {
+      "id": "U1789714294785",
+      "name": "Bhavya Chhajer",
+      "phone": "",
+      "email": "chhajerbhavya30@gmail.com",
+      "role": "customer",
+      "address": "",
+      "shopName": null,
+      "shopId": null,
+      "status": "suspended",
+      "createdAt": "2026-09-18T06:51:34.785Z"
+    },
+    {
+      "id": "U1789724050750",
+      "name": "Rahul Sharma",
+      "phone": "8283833894",
+      "email": "",
+      "role": "shopkeeper",
+      "address": "",
+      "shopName": "Suresh Kirana Store",
+      "shopId": "S0006",
+      "status": "suspended",
+      "createdAt": "2026-09-18T09:34:10.726Z"
+    }
+  ],
+  "shops": [
+    {
+      "id": "S001",
+      "name": "Suresh Kirana Store",
+      "area": "Model Town, Ludhiana",
+      "rating": 4.5,
+      "deliveryTime": "20-30 min",
+      "image": "kirana",
+      "ownerId": "U0002",
+      "status": "approved",
+      "latitude": 30.901,
+      "longitude": 75.8573,
+      "createdAt": "2026-09-12T06:55:34.719Z",
+      "legal": {
+        "gstin": "03AAAAA0000A1Z5",
+        "fssaiNumber": "12345678901234",
+        "panNumber": "AAAAA0000A",
+        "tradeLicense": "TL/LUD/2026/8941",
+        "status": "verified",
+        "bankDetails": {
+          "bankName": "State Bank of India",
+          "accountNumber": "98765432101",
+          "ifsc": "SBIN0001234",
+          "accountHolder": "Suresh Kumar"
+        },
+        "verifiedAt": "2026-09-12T06:55:34.719Z"
+      }
+    },
+    {
+      "id": "S002",
+      "name": "Green Valley Fresh Mart",
+      "area": "Sarabha Nagar, Ludhiana",
+      "rating": 4.3,
+      "deliveryTime": "25-35 min",
+      "image": "fresh",
+      "ownerId": null,
+      "status": "approved",
+      "latitude": 30.8842,
+      "longitude": 75.8291,
+      "createdAt": "2026-09-12T06:55:34.719Z",
+      "legal": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "S0003",
+      "name": "Test Kirana",
+      "area": "",
+      "rating": 0,
+      "deliveryTime": "20-30 min",
+      "image": "kirana",
+      "ownerId": "U1789196134725",
+      "status": "approved",
+      "legal": {
+        "gstin": "07AAAAA0000A1Z5",
+        "panNumber": "AAAAA0000A",
+        "fssaiNumber": "12345678901234",
+        "tradeLicense": "TL-LUD-2026-001",
+        "legalTradeName": "Test Kirana Enterprise",
+        "bankDetails": {
+          "bankName": "HDFC Bank",
+          "accountNumber": "123456789012",
+          "ifsc": "HDFC0001234",
+          "accountHolder": "Test Shopkeeper"
+        },
+        "status": "verified",
+        "updatedAt": "2026-09-12T06:55:48.477Z",
+        "notes": "All government documents and GSTIN verified successfully.",
+        "reviewedAt": "2026-09-12T06:55:48.492Z"
+      },
+      "createdAt": "2026-09-12T06:55:34.721Z"
+    },
+    {
+      "id": "S0004",
+      "name": "Gupta Daily Needs",
+      "area": "Sector 18, Ludhiana",
+      "rating": 0,
+      "deliveryTime": "20-30 min",
+      "image": "kirana",
+      "ownerId": "U1789196134757",
+      "status": "approved",
+      "legal": {
+        "status": "draft",
+        "gstin": "",
+        "fssaiNumber": "",
+        "panNumber": "",
+        "tradeLicense": "",
+        "bankDetails": {},
+        "documents": {},
+        "updatedAt": "2026-09-12T06:55:34.753Z"
+      },
+      "createdAt": "2026-09-12T06:55:34.753Z"
+    },
+    {
+      "id": "S0005",
+      "name": "SURESH KIRAN STORE",
+      "area": "",
+      "rating": 0,
+      "deliveryTime": "20-30 min",
+      "image": "kirana",
+      "ownerId": "U1789197765061",
+      "status": "approved",
+      "legal": {
+        "status": "draft"
+      },
+      "createdAt": "2026-09-12T07:22:45.054Z"
+    },
+    {
+      "id": "S0006",
+      "name": "Suresh Kirana Store",
+      "area": "",
+      "rating": 0,
+      "deliveryTime": "20-30 min",
+      "image": "kirana",
+      "ownerId": "U1789724050750",
+      "status": "suspended",
+      "legal": {
+        "status": "draft"
+      },
+      "createdAt": "2026-09-18T09:34:10.726Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "P001",
+      "shopId": "S001",
+      "name": "Amul Toned Milk",
+      "unit": "500 ml",
+      "price": 27,
+      "category": "Dairy",
+      "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=60",
+      "inStock": true,
+      "expiryDate": "2026-09-14"
+    },
+    {
+      "id": "P002",
+      "shopId": "S001",
+      "name": "Aashirvaad Atta",
+      "unit": "5 kg",
+      "price": 245,
+      "category": "Staples",
+      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60",
+      "inStock": true,
+      "expiryDate": null
+    },
+    {
+      "id": "P003",
+      "shopId": "S001",
+      "name": "Tata Salt",
+      "unit": "1 kg",
+      "price": 25,
+      "category": "Staples",
+      "image": "https://images.unsplash.com/photo-1518110925495-5fe2fda0442c?w=500&auto=format&fit=crop&q=60",
+      "inStock": true,
+      "expiryDate": null
+    },
+    {
+      "id": "P004",
+      "shopId": "S001",
+      "name": "Fortune Sunflower Oil",
+      "unit": "1 L",
+      "price": 149,
+      "category": "Staples",
+      "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500&auto=format&fit=crop&q=60",
+      "inStock": true,
+      "expiryDate": "2026-12-31"
+    },
+    {
+      "id": "P005",
+      "shopId": "S001",
+      "name": "Britannia Bread",
+      "unit": "400 g",
+      "price": 45,
+      "category": "Bakery",
+      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60",
+      "inStock": true,
+      "expiryDate": "2026-09-14"
+    },
+    {
+      "id": "P006",
+      "shopId": "S001",
+      "name": "Amul Butter",
+      "unit": "100 g",
+      "price": 56,
+      "category": "Dairy",
+      "image": "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=500&auto=format&fit=crop&q=60",
+      "inStock": true,
+      "expiryDate": "2026-10-15"
+    },
+    {
+      "id": "P007",
+      "shopId": "S001",
+      "name": "Red Onion",
+      "unit": "1 kg",
+      "price": 35,
+      "category": "Vegetables",
+      "image": "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=500&auto=format&fit=crop&q=60",
+      "inStock": true,
+      "expiryDate": "2026-09-22"
+    },
+    {
+      "id": "P008",
+      "shopId": "S001",
+      "name": "Potato",
+      "unit": "1 kg",
+      "price": 28,
+      "category": "Vegetables",
+      "image": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500&auto=format&fit=crop&q=60",
+      "inStock": true,
+      "expiryDate": "2026-09-25"
+    },
+    {
+      "id": "P009",
+      "shopId": "S002",
+      "name": "Fresh Tomato",
+      "unit": "1 kg",
+      "price": 40,
+      "category": "Vegetables",
+      "image": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60",
+      "inStock": true,
+      "expiryDate": "2026-09-15"
+    },
+    {
+      "id": "P010",
+      "shopId": "S002",
+      "name": "Banana",
+      "unit": "1 dozen",
+      "price": 60,
+      "category": "Fruits",
+      "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500&auto=format&fit=crop&q=60",
+      "inStock": true,
+      "expiryDate": "2026-09-15"
+    },
+    {
+      "id": "P011",
+      "shopId": "S002",
+      "name": "Apple (Shimla)",
+      "unit": "1 kg",
+      "price": 180,
+      "category": "Fruits",
+      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500&auto=format&fit=crop&q=60",
+      "inStock": true,
+      "expiryDate": "2026-09-25"
+    },
+    {
+      "id": "P012",
+      "shopId": "S002",
+      "name": "Maggi Noodles",
+      "unit": "4 pack",
+      "price": 56,
+      "category": "Snacks",
+      "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=500&auto=format&fit=crop&q=60",
+      "inStock": true,
+      "expiryDate": "2026-12-31"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD0001",
+      "customer": "Bhavya Chhajer",
+      "phone": "8283833894",
+      "address": "265 near jain public school",
+      "shopId": "S001",
+      "shopName": "Suresh Kirana Store",
+      "deliveryTime": "As soon as possible",
+      "notes": "",
+      "paymentMethod": "Cash on Delivery",
+      "items": [
+        {
+          "id": "P005",
+          "name": "Britannia Bread",
+          "unit": "400 g",
+          "qty": 1,
+          "price": 45,
+          "image": ""
+        }
+      ],
+      "subtotal": 45,
+      "deliveryFee": 40,
+      "platformFee": 5,
+      "total": 90,
+      "status": "Delivered",
+      "date": "12/9/2026",
+      "createdAt": "2026-09-12T07:21:42.154Z",
+      "updatedAt": "2026-09-12T07:23:17.281Z",
+      "destLat": 31.399337511478155,
+      "destLng": 75.53712388122516,
+      "riderLat": null,
+      "riderLng": null
+    },
+    {
+      "id": "ORD0002",
+      "customer": "Bhavya Chhajer",
+      "phone": "8283833894",
+      "address": "265 near jain public school",
+      "shopId": "S001",
+      "shopName": "Suresh Kirana Store",
+      "deliveryTime": "As soon as possible",
+      "notes": "",
+      "paymentMethod": "Cash on Delivery",
+      "items": [
+        {
+          "id": "P002",
+          "name": "Aashirvaad Atta",
+          "unit": "5 kg",
+          "qty": 1,
+          "price": 245,
+          "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60",
+          "expiryDate": null
+        },
+        {
+          "id": "P001",
+          "name": "Amul Toned Milk",
+          "unit": "500 ml",
+          "qty": 1,
+          "price": 27,
+          "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=60",
+          "expiryDate": null
+        },
+        {
+          "id": "P004",
+          "name": "Fortune Sunflower Oil",
+          "unit": "1 L",
+          "qty": 1,
+          "price": 149,
+          "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500&auto=format&fit=crop&q=60",
+          "expiryDate": null
+        }
+      ],
+      "subtotal": 421,
+      "deliveryFee": 40,
+      "platformFee": 5,
+      "total": 466,
+      "status": "Delivered",
+      "date": "14/9/2026",
+      "createdAt": "2026-09-14T16:14:40.954Z",
+      "updatedAt": "2026-09-14T16:16:01.684Z",
+      "destLat": 31.399337511478155,
+      "destLng": 75.53712388122516,
+      "riderLat": null,
+      "riderLng": null,
+      "riderName": "Vikas Kumar (Delivery Partner)",
+      "riderPhone": "+91 8283833894",
+      "vehicleNumber": "PB-10-EK-4589"
+    }
+  ],
+  "reviews": [],
+  "wishlist": [],
+  "counters": {
+    "S": 6,
+    "P": 12,
+    "U": 3,
+    "ORD": 2
+  },
+  "legal": []
+}

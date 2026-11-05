@@ -1,0 +1,25 @@
+{
+  "name": "apnakirana-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ApnaKirana backend API - Express + JSON file datastore (single source of truth for orders/products/users)",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "firebase-admin": "^12.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.1",
+    "nodemailer": "^10.0.8",
+    "razorpay": "^2.9.4",
+    "socket.io": "^4.7.5",
+    "twilio": "^5.3.0",
+    "zod": "^3.23.8"
+  }
+}
