@@ -1,0 +1,15 @@
+{
+  "name": "apnakirana-showcase",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ApnaKirana Official Showcase Landing Page",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'Build ready'",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
