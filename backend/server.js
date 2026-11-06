@@ -73,7 +73,7 @@ httpServer.on("error", (err) => {
   }
 });
 
-httpServer.listen(PORT, () => {
-  console.log(`ApnaKirana backend running on http://localhost:${PORT}`);
+httpServer.listen(PORT, "0.0.0.0", () => {
+  console.log(`ApnaKirana backend running on port ${PORT}`);
   console.log(`Realtime (Socket.IO) attached to the same server.`);
 });

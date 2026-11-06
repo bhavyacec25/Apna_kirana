@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "description": "ApnaKirana Instant Grocery & Kirana Delivery Platform",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
-    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install",
+    "build": "cd frontend && npm install --include=dev && npm run build && cd ../backend && npm install",
     "start": "cd backend && node server.js",
-    "render-build": "cd frontend && npm install && npm run build && cd ../backend && npm install",
+    "render-build": "cd frontend && npm install --include=dev && npm run build && cd ../backend && npm install",
     "render-start": "cd backend && node server.js"
   }
 }
