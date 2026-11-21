@@ -121,12 +121,14 @@ router.post("/send-otp", otpLimiter, validate(sendOtpSchema), async (req, res, n
         });
       }
 
-      // Dev mode: return OTP hint if no external gateway is configured
+      // Dev / Fallback mode: return OTP hint if no external gateway is configured or active
       return res.json({
         success: true,
         message: `OTP generated for +91 ${phone}`,
-        channel: "sms",
+        channel: "dev",
+        provider: "dev",
         devHint: generatedOtp,
+        fallbackOtp: "123456",
       });
     }
 

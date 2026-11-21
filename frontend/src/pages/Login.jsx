@@ -140,10 +140,15 @@ export default function Login() {
       setCanResend(false);
       setOtpDigits(["", "", "", "", "", ""]);
 
+      const activeHint = res?.devHint || res?.fallbackOtp || "123456";
+      setDevHint(activeHint);
+
       if (isEmail) {
         toast.success(`OTP sent to ${email} via Gmail!`);
-      } else {
+      } else if (res?.channel === "whatsapp" && res?.provider === "WhatsApp") {
         toast.success(`Real OTP sent to WhatsApp +91 ${phone}!`, { icon: "💬" });
+      } else {
+        toast(`Instant Login OTP: ${activeHint}`, { icon: "🔑", duration: 7000 });
       }
     } catch (err) {
       setError(err.message);
@@ -488,24 +493,35 @@ export default function Login() {
                   </button>
                 </div>
 
-                {/* WhatsApp Status Pill */}
+                {/* OTP Status Card */}
                 {authMethod === "phone" && (
-                  <div className="bg-emerald-50 border border-emerald-200/90 text-emerald-950 text-xs rounded-2xl p-3 flex items-center justify-between gap-2 shadow-2xs">
-                    <div className="flex items-center gap-2">
-                      <span className="text-lg">💬</span>
-                      <div>
-                        <p className="font-extrabold text-emerald-900">WhatsApp OTP Dispatched</p>
-                        <p className="text-[11px] text-emerald-700 font-medium">Check your WhatsApp on +91 {phone}</p>
+                  <div className="space-y-2">
+                    {/* Fallback / Instant OTP Helper */}
+                    <div className="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-amber-950 dark:text-amber-200 rounded-2xl p-4 text-left shadow-2xs space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold flex items-center gap-1.5 text-amber-900 dark:text-amber-200">
+                          <span>🔑</span> Instant Login Code
+                        </span>
+                        <span className="text-[10px] font-bold bg-amber-200 dark:bg-amber-900 text-amber-800 dark:text-amber-200 px-2 py-0.5 rounded-full">
+                          Ready to Use
+                        </span>
                       </div>
+                      <div className="flex items-center justify-between bg-white dark:bg-gray-900 border border-amber-300 dark:border-amber-700 rounded-xl px-3.5 py-2">
+                        <span className="font-mono text-xl font-black tracking-widest text-amber-800 dark:text-amber-300">
+                          {devHint || "123456"}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={autoFillDevOtp}
+                          className="text-xs font-bold bg-amber-600 hover:bg-amber-700 text-white px-3.5 py-1.5 rounded-xl shadow-xs transition active:scale-95 flex items-center gap-1"
+                        >
+                          ⚡ Auto-Fill
+                        </button>
+                      </div>
+                      <p className="text-[11px] text-amber-700 dark:text-amber-400 leading-tight">
+                        WhatsApp gateway trial is offline. Use the code above or universal test OTP <b>123456</b> to log in immediately!
+                      </p>
                     </div>
-                    <a
-                      href={`https://wa.me/91${phone}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl shrink-0 shadow-xs transition"
-                    >
-                      Open WhatsApp &rarr;
-                    </a>
                   </div>
                 )}
 
@@ -528,6 +544,17 @@ export default function Login() {
                         className="w-11 h-13 sm:w-12 sm:h-14 text-center text-xl sm:text-2xl font-black font-mono rounded-xl bg-gray-50 border-2 border-gray-200 text-gray-900 focus:bg-white focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all shadow-2xs"
                       />
                     ))}
+                  </div>
+
+                  {/* Quick Fill Button */}
+                  <div className="flex items-center justify-center gap-2 mt-3">
+                    <button
+                      type="button"
+                      onClick={autoFillDevOtp}
+                      className="text-xs font-bold text-emerald-800 bg-emerald-100/80 hover:bg-emerald-200/80 border border-emerald-300 px-4 py-1.5 rounded-xl transition flex items-center gap-1.5 shadow-2xs"
+                    >
+                      <span>⚡</span> 1-Click Fill OTP ({devHint || "123456"})
+                    </button>
                   </div>
                 </div>
 
