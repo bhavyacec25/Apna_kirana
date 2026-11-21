@@ -200,7 +200,25 @@ router.post("/:id/rider-status", asyncHandler(async (req, res) => {
 
 // POST /api/orders  (place order — customer only)
 router.post("/", requireRole("customer"), validate(placeOrderSchema), asyncHandler(async (req, res) => {
-  const { customer, phone, email, address, shopId, shopName, deliveryTime, notes, paymentMethod, items, destLat, destLng, discount, couponCode } = req.body;
+  const {
+    customer,
+    phone,
+    email,
+    address,
+    shopId,
+    shopName,
+    deliveryTime,
+    notes,
+    paymentMethod,
+    paymentId,
+    paymentStatus,
+    paymentDetails,
+    items,
+    destLat,
+    destLng,
+    discount,
+    couponCode
+  } = req.body;
 
   // If user registered with phone, verify it matches. If user registered with email and had no phone, save this phone to profile.
   if (req.user.phone && phone && phone !== req.user.phone) {
@@ -236,6 +254,10 @@ router.post("/", requireRole("customer"), validate(placeOrderSchema), asyncHandl
   const finalDestLat = destLat || 30.9120;
   const finalDestLng = destLng || 75.8450;
 
+  const isPaidOnline = paymentStatus === "Paid" || (paymentMethod && paymentMethod !== "Cash on Delivery");
+  const finalPaymentStatus = paymentStatus || (paymentMethod === "Cash on Delivery" ? "Pending" : "Paid");
+  const finalPaymentId = paymentId || (paymentMethod === "Cash on Delivery" ? null : `TXN_${Date.now().toString(36).toUpperCase()}`);
+
   const order = {
     id: await getNextId("ORD"),
     customerId: req.user.id,
@@ -248,6 +270,10 @@ router.post("/", requireRole("customer"), validate(placeOrderSchema), asyncHandl
     deliveryTime: deliveryTime || "As soon as possible",
     notes: notes || "",
     paymentMethod: paymentMethod || "Cash on Delivery",
+    paymentStatus: finalPaymentStatus,
+    paymentId: finalPaymentId,
+    paymentDetails: paymentDetails || null,
+    paidAt: isPaidOnline ? now.toISOString() : null,
     items,
     subtotal,
     deliveryFee,

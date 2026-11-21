@@ -175,7 +175,20 @@ export default function Orders() {
                 </p>
 
                 <div className="flex items-center justify-between flex-wrap gap-2">
-                  <span className="font-semibold text-brand-700">₹{order.total}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-base text-brand-700 dark:text-brand-400">₹{order.total}</span>
+                    <span
+                      className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
+                        order.paymentStatus === "Paid"
+                          ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
+                          : "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300"
+                      }`}
+                    >
+                      {order.paymentStatus === "Paid"
+                        ? `✓ Paid (${order.paymentMethod || "Online"})`
+                        : "Cash on Delivery"}
+                    </span>
+                  </div>
                   <div className="flex gap-2 flex-wrap">
                     {order.status === "Pending" && (
                       <button

@@ -77,6 +77,14 @@
 * **Server-Side Whitelist Shield:** Requests to `/api/auth/send-otp` with `role: "admin"` are verified against database records. Unauthorized numbers are blocked with `403 Forbidden`.
 * **Team Scaling & Member Invites:** Master Admin can authorize and invite new operational admins (Operations Lead, Catalog Manager, Dispute Lead) with instant WhatsApp clearance and safe revocation safeguards.
 
+### 6. 💳 Multi-Rail Indian Payment Gateway (UPI, Cards & Razorpay)
+* **Instant Dynamic UPI QR Code:** Generates dynamic, order-specific scannable QR codes for exact bill amounts with a live 5-minute countdown and copyable merchant VPA (`apnakirana@okhdfcbank`).
+* **Direct 1-Tap UPI Apps:** Supports Google Pay, PhonePe, Paytm, and CRED with custom URI intent triggers.
+* **Credit & Debit Cards (RBI Tokenized):** Auto-formatting 16-digit card input, card brand identification (Visa, Mastercard, RuPay, Amex), and realistic **Bank 3D-Secure SMS OTP simulation** with pre-filled test codes.
+* **NetBanking & Wallets:** One-click bank redirection for SBI, HDFC, ICICI, Axis, Kotak, PNB, and 50+ other Indian scheduled banks.
+* **Official Razorpay API Support:** Ready for production with HMAC-SHA256 signature verification when `RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET` are supplied in environment variables.
+* **Real Receipts & Auditing:** Captures transaction IDs (`TXN_...`), payment timestamps, and payment status badges across customer orders, tracking maps, and merchant order management consoles.
+
 ---
 
 ## 🏗️ System Architecture
@@ -107,6 +115,7 @@ graph TD
         L[💬 UltraMsg WhatsApp API]
         M[✉️ Gmail SMTP Transporter]
         N[🗺️ CartoDB Tile Provider]
+        P[💳 Payment Gateway - UPI & Razorpay]
     end
 
     subgraph Data Layer

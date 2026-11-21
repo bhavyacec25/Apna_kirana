@@ -142,6 +142,9 @@ export const placeOrderSchema = z.object({
   destLng: z.number().optional().nullable(),
   discount: z.number().optional().default(0),
   couponCode: z.string().optional().nullable(),
+  paymentId: z.string().optional().nullable(),
+  paymentStatus: z.enum(["Paid", "Pending", "Failed"]).optional(),
+  paymentDetails: z.record(z.any()).optional().nullable(),
 });
 
 export const updateStatusSchema = z.object({

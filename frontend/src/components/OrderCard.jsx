@@ -39,8 +39,24 @@ export default function OrderCard({ order, onStatusChange }) {
       </div>
 
       <div className="flex items-center justify-between border-t border-gray-100 pt-3 mb-4">
-        <span className="text-sm text-gray-500">Total</span>
-        <span className="font-display font-bold text-brand-700">₹{order.total}</span>
+        <div>
+          <span className="text-[11px] text-gray-400 block font-medium">
+            {order.paymentMethod || "Payment"}
+          </span>
+          <span
+            className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mt-0.5 ${
+              order.paymentStatus === "Paid"
+                ? "bg-emerald-100 text-emerald-800"
+                : "bg-amber-100 text-amber-800"
+            }`}
+          >
+            {order.paymentStatus === "Paid" ? "✓ Paid Online" : "Collect Cash (COD)"}
+          </span>
+        </div>
+        <div className="text-right">
+          <span className="text-[11px] text-gray-400 block font-medium">Order Total</span>
+          <span className="font-display font-bold text-base text-brand-700">₹{order.total}</span>
+        </div>
       </div>
 
       {actions.length > 0 && (

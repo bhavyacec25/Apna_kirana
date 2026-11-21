@@ -164,10 +164,29 @@ export default function OrderTracking() {
               </div>
             </div>
 
-            <div className="card p-5 text-sm text-gray-600 dark:text-gray-300">
+            <div className="card p-5 text-sm text-gray-600 dark:text-gray-300 space-y-2">
               <p><span className="font-medium text-gray-800 dark:text-gray-200">Delivering to:</span> {order.address}</p>
-              <p className="mt-1"><span className="font-medium text-gray-800 dark:text-gray-200">Payment:</span> {order.paymentMethod}</p>
-              {order.notes && <p className="mt-1"><span className="font-medium text-gray-800 dark:text-gray-200">Notes:</span> {order.notes}</p>}
+              <div className="flex items-center justify-between flex-wrap gap-2 pt-1 border-t border-gray-100 dark:border-gray-800">
+                <div>
+                  <span className="font-medium text-gray-800 dark:text-gray-200">Payment: </span>
+                  <span>{order.paymentMethod}</span>
+                  {order.paymentId && (
+                    <span className="text-xs font-mono text-gray-400 block sm:inline sm:ml-2">
+                      Ref: {order.paymentId}
+                    </span>
+                  )}
+                </div>
+                <span
+                  className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full ${
+                    order.paymentStatus === "Paid"
+                      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
+                      : "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300"
+                  }`}
+                >
+                  {order.paymentStatus === "Paid" ? "✓ Paid Online" : "Cash on Delivery"}
+                </span>
+              </div>
+              {order.notes && <p className="pt-1"><span className="font-medium text-gray-800 dark:text-gray-200">Notes:</span> {order.notes}</p>}
             </div>
           </>
         )}
