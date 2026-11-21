@@ -26,7 +26,7 @@ export default function Wishlist() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-rose-50/20 to-brand-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors pb-16">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-rose-50/20 to-brand-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors pb-24 md:pb-16">
       <Navbar />
 
       {/* Hero Banner */}

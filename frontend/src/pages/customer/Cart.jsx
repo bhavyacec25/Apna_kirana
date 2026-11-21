@@ -376,6 +376,32 @@ export default function Cart() {
                 `Add ₹${amountNeeded} More for Online Delivery`
               )}
             </motion.button>
+
+            {/* Mobile Fixed Bottom Checkout Bar */}
+            <div className="fixed bottom-14 left-0 right-0 z-30 md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-t border-gray-200 dark:border-gray-800 px-4 py-2.5 shadow-2xl flex items-center justify-between gap-3">
+              <div>
+                <span className="text-[10px] uppercase font-bold text-gray-400 block">Total Due</span>
+                <span className="font-black text-base text-emerald-700 dark:text-emerald-400">₹{total}</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => navigate("/customer/checkout")}
+                disabled={!eligibleForDelivery}
+                className={`py-2.5 px-5 rounded-xl font-black text-xs shadow-md flex items-center justify-center gap-1.5 transition-all ${
+                  eligibleForDelivery
+                    ? "bg-emerald-600 text-white active:scale-95"
+                    : "bg-gray-200 dark:bg-gray-800 text-gray-400 cursor-not-allowed"
+                }`}
+              >
+                {eligibleForDelivery ? (
+                  <>
+                    Checkout · ₹{total} <FiArrowRight size={13} />
+                  </>
+                ) : (
+                  `Add ₹${amountNeeded} More`
+                )}
+              </button>
+            </div>
           </div>
         )}
       </div>

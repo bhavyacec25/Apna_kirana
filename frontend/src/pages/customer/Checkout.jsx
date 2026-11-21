@@ -328,7 +328,7 @@ export default function Checkout() {
   };
 
   return (
-    <div className="min-h-screen pb-12">
+    <div className="min-h-screen pb-24 md:pb-12">
       <Navbar />
       <div className="max-w-2xl mx-auto px-4 py-6">
         <Link to="/customer/cart" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-brand-600 mb-4 font-medium">

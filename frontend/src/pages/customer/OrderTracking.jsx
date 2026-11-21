@@ -74,7 +74,7 @@ export default function OrderTracking() {
   const showMap = order && !isCancelled && (order.status === "Out for Delivery" || order.status === "Delivered");
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-24 md:pb-12">
       <Navbar />
       <div className="max-w-xl mx-auto px-4 py-6">
         <Link to="/customer/orders" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-brand-600 mb-4">

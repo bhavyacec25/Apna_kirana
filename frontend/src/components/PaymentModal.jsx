@@ -233,39 +233,39 @@ export default function PaymentModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50 animate-fadeIn">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 z-50 animate-fadeIn">
       <div
-        className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 w-full max-w-xl overflow-hidden flex flex-col max-h-[92vh]"
+        className="bg-white dark:bg-gray-900 rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 w-full max-w-xl overflow-hidden flex flex-col max-h-[96vh] sm:max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white px-5 py-4 flex items-center justify-between shrink-0 shadow-sm">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center backdrop-blur-md">
-              <FiShield className="text-xl text-emerald-200" />
+        <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white px-3.5 sm:px-5 py-3 sm:py-4 flex items-center justify-between shrink-0 shadow-sm">
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white/15 flex items-center justify-center backdrop-blur-md shrink-0">
+              <FiShield className="text-lg sm:text-xl text-emerald-200" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h2 className="font-extrabold text-base sm:text-lg leading-tight">ApnaKirana Secure Pay</h2>
-                <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider text-emerald-100 flex items-center gap-1">
-                  <FiLock size={9} /> 256-bit SSL
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <h2 className="font-extrabold text-sm sm:text-lg leading-tight">ApnaKirana Pay</h2>
+                <span className="text-[9px] sm:text-[10px] bg-white/20 px-1.5 sm:px-2 py-0.5 rounded-full font-bold uppercase tracking-wider text-emerald-100 flex items-center gap-0.5 sm:gap-1">
+                  <FiLock size={8} /> 256-bit
                 </span>
               </div>
-              <p className="text-xs text-emerald-100/90 font-medium">Safe & Encrypted Instant Payment</p>
+              <p className="text-[10px] sm:text-xs text-emerald-100/90 font-medium">Safe &amp; Encrypted Payment</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <div className="text-right">
-              <span className="text-[11px] text-emerald-200 block uppercase font-bold tracking-wider">Amount Due</span>
-              <span className="text-xl sm:text-2xl font-black text-white">₹{total}</span>
+              <span className="text-[9px] sm:text-[11px] text-emerald-200 block uppercase font-bold tracking-wider">Due</span>
+              <span className="text-lg sm:text-2xl font-black text-white">₹{total}</span>
             </div>
             <button
               onClick={onClose}
               disabled={processing}
-              className="w-8 h-8 rounded-full bg-black/20 hover:bg-black/30 text-white/80 hover:text-white flex items-center justify-center transition-colors disabled:opacity-40"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/20 hover:bg-black/30 text-white/80 hover:text-white flex items-center justify-center transition-colors disabled:opacity-40"
               aria-label="Close Payment Gateway"
             >
-              <FiX size={18} />
+              <FiX size={16} />
             </button>
           </div>
         </div>
@@ -335,56 +335,56 @@ export default function PaymentModal({
           ) : (
             <div>
               {/* Payment Method Selector Tabs */}
-              <div className="grid grid-cols-4 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/40 text-xs font-bold text-gray-500">
+              <div className="grid grid-cols-4 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/40 text-[10px] sm:text-xs font-bold text-gray-500">
                 <button
                   type="button"
                   onClick={() => setActiveTab("upi")}
-                  className={`py-3 px-2 flex flex-col sm:flex-row items-center justify-center gap-1.5 transition-colors border-b-2 ${
+                  className={`py-2.5 sm:py-3 px-1 sm:px-2 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 transition-colors border-b-2 ${
                     activeTab === "upi"
                       ? "border-emerald-600 text-emerald-700 dark:text-emerald-400 bg-white dark:bg-gray-900"
                       : "border-transparent hover:text-gray-700"
                   }`}
                 >
-                  <FiSmartphone className="text-base" />
-                  <span>UPI & QR</span>
+                  <FiSmartphone className="text-sm sm:text-base" />
+                  <span>UPI &amp; QR</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setActiveTab("card")}
-                  className={`py-3 px-2 flex flex-col sm:flex-row items-center justify-center gap-1.5 transition-colors border-b-2 ${
+                  className={`py-2.5 sm:py-3 px-1 sm:px-2 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 transition-colors border-b-2 ${
                     activeTab === "card"
                       ? "border-emerald-600 text-emerald-700 dark:text-emerald-400 bg-white dark:bg-gray-900"
                       : "border-transparent hover:text-gray-700"
                   }`}
                 >
-                  <FiCreditCard className="text-base" />
+                  <FiCreditCard className="text-sm sm:text-base" />
                   <span>Cards</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setActiveTab("netbanking")}
-                  className={`py-3 px-2 flex flex-col sm:flex-row items-center justify-center gap-1.5 transition-colors border-b-2 ${
+                  className={`py-2.5 sm:py-3 px-1 sm:px-2 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 transition-colors border-b-2 ${
                     activeTab === "netbanking"
                       ? "border-emerald-600 text-emerald-700 dark:text-emerald-400 bg-white dark:bg-gray-900"
                       : "border-transparent hover:text-gray-700"
                   }`}
                 >
-                  <FiGlobe className="text-base" />
-                  <span>Net Banking</span>
+                  <FiGlobe className="text-sm sm:text-base" />
+                  <span className="truncate">Net Banking</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setActiveTab("wallets")}
-                  className={`py-3 px-2 flex flex-col sm:flex-row items-center justify-center gap-1.5 transition-colors border-b-2 ${
+                  className={`py-2.5 sm:py-3 px-1 sm:px-2 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 transition-colors border-b-2 ${
                     activeTab === "wallets"
                       ? "border-emerald-600 text-emerald-700 dark:text-emerald-400 bg-white dark:bg-gray-900"
                       : "border-transparent hover:text-gray-700"
                   }`}
                 >
-                  <FiLock className="text-base" />
+                  <FiLock className="text-sm sm:text-base" />
                   <span>Wallets</span>
                 </button>
               </div>
@@ -436,7 +436,7 @@ export default function PaymentModal({
                         <img
                           src={qrCodeUrl}
                           alt="ApnaKirana Dynamic UPI QR Code"
-                          className="w-44 h-44 sm:w-48 sm:h-48 rounded-xl object-contain"
+                          className="w-36 h-36 sm:w-48 sm:h-48 rounded-xl object-contain"
                           loading="eager"
                         />
                         <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow flex items-center gap-1 whitespace-nowrap">
